@@ -1,7 +1,9 @@
 <template>
-  <div></div>
+  <Header />
+  <router-view />
+  <Footer />
 </template>
-
-<script setup></script>
-
-<style scoped></style>
+<script setup>
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+</script>
