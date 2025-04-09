@@ -6,6 +6,27 @@ import axios from 'axios';
 export const useTransactionStore = defineStore('useTransactionStore', () => {
   const transactions = ref([]);
 
+  const incomeCategory = ref([]);
+  const expenseCategory = ref([]);
+
+  // 카테고리 불러오기
+  const fetchCategories = async () => {
+    try {
+      const incomeResponse = await axios.get('/api/incomeCategory');
+      incomeCategory.value = incomeResponse.data.map(
+        (category) => category.name
+      );
+
+      const expenseResponse = await axios.get('/api/expenseCategory');
+      expenseCategory.value = expenseResponse.data.map(
+        (category) => category.name
+      );
+    } catch (err) {
+      console.error('카테고리 불러오기에 실패했습니다. :', err);
+      return [];
+    }
+  };
+
   //불러오기
   const fetchTransactions = async () => {
     try {
@@ -54,5 +75,8 @@ export const useTransactionStore = defineStore('useTransactionStore', () => {
     addTransaction,
     updateTransaction,
     deleteTransaction,
+    incomeCategory,
+    expenseCategory,
+    fetchCategories,
   };
 });
