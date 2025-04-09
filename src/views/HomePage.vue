@@ -1,5 +1,4 @@
 <template>
-  <Header />
   <MonthlyReport />
   <RecentHistory />
   <Footer />
