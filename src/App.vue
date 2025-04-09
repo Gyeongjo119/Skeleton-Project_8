@@ -1,7 +1,5 @@
 <template>
-  <Header />
-  <router-view />
-  <Footer />
+  <router-view></router-view>
 </template>
 <script setup>
 import Header from './components/Header.vue';
